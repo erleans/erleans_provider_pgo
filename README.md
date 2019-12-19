@@ -1,7 +1,7 @@
-erleans_postgres_provider
+Erleans Postgres Persistence Provider
 =====
 
-An OTP application
+[Erleans](https://github.com/erleans/erleans) Persistence Provider backed by Postgres with library [pgo](https://github.com/erleans/pgo).
 
 Build
 -----

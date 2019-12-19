@@ -1,0 +1,17 @@
+{application, erleans_provider_pgo,
+ [{description, "Erleans Persistence Provider backed by Postgres with library PGO"},
+  {vsn, "git"},
+  {registered, []},
+  {mod, {erleans_provider_pgo_app, []}},
+  {applications,
+   [kernel,
+    stdlib,
+    pgo
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["Apache 2.0"]},
+  {links, [{"Github", "https://github.com/erleans/erleans_provider_pgo"},
+           {"PGO", "https://github.com/erleans/pgo"}]}
+ ]}.
