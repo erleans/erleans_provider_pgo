@@ -99,8 +99,9 @@ create_grains_table() ->
 
 all_(Type) ->
     Q = query(select_all),
+    TypeBin = atom_to_binary(Type, utf8),
     #{command := select, rows := Rows} = pgo:query(Q, [atom_to_binary(Type, utf8)]),
-    {ok, [{binary_to_term(IdBin), Type, ETag, binary_to_term(StateBin)}
+    {ok, [{binary_to_term(IdBin), TypeBin, ETag, binary_to_term(StateBin)}
           || {IdBin, ETag, StateBin} <- Rows]}.
 
 
