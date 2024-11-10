@@ -51,4 +51,23 @@ f756e7465726101770c63616c6c5f636f756e7465726102 | 2024-11-10 10:25:31.303615
 (1 row)
  ```
  
- 
+# Run Tests
+
+The project comes with a `docker-compose.yaml` file for starting Postgres:
+
+```
+$ docker compose up
+```
+
+After running this the tests will pass:
+
+```
+$ rebar3 ct
+```
+
+Note that unless you run `docker compose down`, as opposed to simply
+`ctrl-c`'ing out of the `docker compose up` when you run `up` again it will
+reuse the previous container and thus its database. To run a test from a blank
+state of the database be sure to run `docker compose down` after running tests
+or run with `-V` (`docker compose up -V`) which tells docker to recreate
+volumes.
