@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: cimg/postgres:14.2
+    restart: always
+    ports:
+    - 5432:5432
+    tmpfs:
+    - /var/lib/newpostgres/data
+    command: -c fsync=off -c full_page_writes=off
+    environment:
+    - POSTGRES_USER=test
+    - POSTGRES_DB=test
+    - POSTGRES_PASSWORD=test
+    - POSTGRES_HOST_AUTH_METHOD=scram-sha-256

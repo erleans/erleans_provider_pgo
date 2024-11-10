@@ -48,9 +48,9 @@ all(Type, ProviderName) ->
 read(Type, ProviderName, Id) ->
     do(ProviderName, fun() ->
                              case read_(Id, Type, erlang:phash2({Id, Type})) of
-                                 {ok, {_, _, ETag, State}} ->
+                                 {value, {_, _, ETag, State}} ->
                                      {ok, binary_to_term(State), ETag};
-                                 error ->
+                                 false ->
                                      not_found
                              end
                      end).
@@ -111,11 +111,12 @@ read_(Id, Type, RefHash) ->
     #{command := select, rows := Rows} = pgo:query(Q, [RefHash, atom_to_binary(Type, unicode)]),
     IdBin = term_to_binary(Id),
     TypeBin = atom_to_binary(Type, utf8),
-    ec_lists:find(fun({RowId, RowType, _, _}) when IdBin =:= RowId
-                                                   , TypeBin =:= RowType-> true;
-                     (_) ->
-                          false
-                  end, Rows).
+    lists:search(fun({RowId, RowType, _, _}) when IdBin =:= RowId
+                                                  , TypeBin =:= RowType ->
+                         true;
+                    (_) ->
+                         false
+                 end, Rows).
 
 delete_(Id, Type, RefHash) ->
     Q = query(delete),
