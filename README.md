@@ -1,6 +1,10 @@
 Erleans Postgres Persistence Provider
 =====
 
+[![Tests](https://github.com/erleans/erleans_provider_pgo/actions/workflows/ct.yml/badge.svg)](https://github.com/erleans/erleans_provider_pgo/actions/workflows/ct.yml)
+[![codecov](https://codecov.io/gh/erleans/erleans_provider_pgo/branch/main/graph/badge.svg)](https://codecov.io/gh/erleans/erleans_provider_pgo)
+[![Hex.pm](https://img.shields.io/hexpm/v/erleans_provider_pgo.svg?style=flat)](https://hex.pm/packages/erleans_provider_pgo)
+
 [Erleans](https://github.com/erleans/erleans) Persistence Provider backed by Postgres with library [pgo](https://github.com/erleans/pgo).
 
 # Usage
